@@ -46,19 +46,40 @@ timer_full = function(script_path){
   flag = 0
   
   # Condition 1: Seconds Code
-  if(end_sec >= start_sec){script_sec = end_sec - start_sec} else {script_sec = end_sec + (60 - start_sec)}
-  if(script_sec != 0){flag = 1 + flag}
+  if(end_sec >= start_sec){
+    script_sec = end_sec - start_sec
+    script_min = 0
+    } else {
+    script_sec = end_sec + (60 - start_sec)
+    script_min = -1
+    }
+  
+  if(script_sec != 0){flag = 1 + flag}      # Flag
   
   # Condition 2: Minutes Code
-  if(end_min >= start_min){script_min = end_min - start_min} else {script_min = end_min + (60 - start_min)}
-  if(script_sec != 0){flag = 5 + flag}
+  if(end_min >= start_min){
+    script_min = script_min + end_min - start_min
+    script_hour = 0
+    } else {
+    script_min = script_min + end_min + (60 - start_min)
+    script_hour = -1
+    }
+  
+  if(script_sec != 0){flag = 5 + flag}      # Flag
   
   # Condition 3: Hours Code  
-  if(end_hour >= start_hour){script_hour = end_hour - start_hour} else {script_hour = end_hour + (24 - start_hour)}
-  if(script_hour != 0){flag = 10 + flag}
+  if(end_hour >= start_hour){
+    script_hour = script_hour + end_hour - start_hour
+    script_day = 0
+  } else {
+    script_hour = script_hour + end_hour + (24 - start_hour)
+    script_day = -1
+  }
+  
+  if(script_hour != 0){flag = 10 + flag}    # Flag
   
   # Condition 4: Days Code
-  if(end_day >= start_day){script_day = end_day - start_day}
+  if(end_day >= start_day){script_day = script_day + end_day - start_day}
   if(script_day != 0){flag = 20 + flag}
   
   
@@ -69,6 +90,9 @@ timer_full = function(script_path){
   if(flag == 6){print(x = paste0('The full script took ', script_min, 'm ', round(script_sec), 's'))}
   if(flag == 16){print(x = paste0('The full script lasted ', script_hour , 'h ', script_min, 'm ', round(script_sec), 's'))}
   if(flag == 36){print(x = paste0('The full script lasted ', script_day, 'd ', script_hour , 'h ', script_min, 'm ', round(script_sec), 's'))}
+  
+  
+  rm(start, end, flag)
 }
 
 
@@ -78,7 +102,7 @@ timer_full = function(script_path){
 # ----------------------- #
 # --- Timer - Snippet --- #
 # ----------------------- #
-timer_snippet = function(start, end){
+timer_snippet = function(start, end, snippet_name){
   
   # 1° Step - Accessing some date and time parameters #
   
@@ -101,27 +125,51 @@ timer_snippet = function(start, end){
   flag = 0
   
   # Condition 1: Seconds Code
-  if(end_sec >= start_sec){script_sec = end_sec - start_sec} else {script_sec = end_sec + (60 - start_sec)}
-  if(script_sec != 0){flag = 1 + flag}
+  if(end_sec >= start_sec){
+    script_sec = end_sec - start_sec
+    script_min = 0
+  } else {
+    script_sec = end_sec + (60 - start_sec)
+    script_min = -1
+  }
+  
+  if(script_sec != 0){flag = 1 + flag}      # Flag
   
   # Condition 2: Minutes Code
-  if(end_min >= start_min){script_min = end_min - start_min} else {script_min = end_min + (60 - start_min)}
-  if(script_sec != 0){flag = 5 + flag}
+  if(end_min >= start_min){
+    script_min = script_min + end_min - start_min
+    script_hour = 0
+  } else {
+    script_min = script_min + end_min + (60 - start_min)
+    script_hour = -1
+  }
+  
+  if(script_sec != 0){flag = 5 + flag}      # Flag
   
   # Condition 3: Hours Code  
-  if(end_hour >= start_hour){script_hour = end_hour - start_hour} else {script_hour = end_hour + (24 - start_hour)}
-  if(script_hour != 0){flag = 10 + flag}
+  if(end_hour >= start_hour){
+    script_hour = script_hour + end_hour - start_hour
+    script_day = 0
+  } else {
+    script_hour = script_hour + end_hour + (24 - start_hour)
+    script_day = -1
+  }
+  
+  if(script_hour != 0){flag = 10 + flag}    # Flag
   
   # Condition 4: Days Code
-  if(end_day >= start_day){script_day = end_day - start_day}
+  if(end_day >= start_day){script_day = script_day + end_day - start_day}
   if(script_day != 0){flag = 20 + flag}
   
   
   
   
   # 3° Step - Outputs
-  if(flag == 1){print(x = paste0('This snippet took only ', round(script_sec), 's'))}
-  if(flag == 6){print(x = paste0('This snippet took ', script_min, 'm ', round(script_sec), 's'))}
-  if(flag == 16){print(x = paste0('This snippet lasted ', script_hour , 'h ', script_min, 'm ', round(script_sec), 's'))}
-  if(flag == 36){print(x = paste0('This snippet took ', script_day, 'd ', script_hour , 'h ', script_min, 'm ', round(script_sec), 's'))}
+  if(flag == 1){print(x = paste0('The snippet ', snippet_name, ' took only ', round(script_sec), 's'))}
+  if(flag == 6){print(x = paste0('The snippet ', snippet_name, ' took ', script_min, 'm ', round(script_sec), 's'))}
+  if(flag == 16){print(x = paste0('The snippet ', snippet_name, ' lasted ', script_hour , 'h ', script_min, 'm ', round(script_sec), 's'))}
+  if(flag == 36){print(x = paste0('The snippet ', snippet_name, ' took ', script_day, 'd ', script_hour , 'h ', script_min, 'm ', round(script_sec), 's'))}
+  
+  
+  rm(start, end, flag)
 }
