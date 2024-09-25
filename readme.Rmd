@@ -1,0 +1,143 @@
+---
+title: "Compute how much time your script takes"
+author: "Paulo Icaro"
+date: "2024-09-23"
+hidedate: true
+output: github_document
+---
+
+
+
+
+
+<divs>
+
+<!------------>
+<!-- Part 1 -->
+<!------------>
+
+## Brief guidethrough
+
+<p>
+|       This routine helps you to track the time of your script. Put into few words, this library contains a function that is designed for accounting the elapsed time of a script or just a specific snippet in the code.
+</p>
+
+
+## The Timer Function
+|       The **timer** function contains 3 arguments: script, type and name. 
+*   ***script***: represents the routine to be run. The way the routine is inserted in the script depends on the next argument
+*   ***type***: indicates whether it is a full script, just a snippet of a complete routine or its a mere code.
+*   ***type***: 
+    -   if ***type = 'full'*** you must specify the path of the script to be run on the previous argument.
+    -   if ***type = 'snippet'*** you must apply, on the previous argument, the function on a piece of the code. 
+    -   if ***type = 'simple'*** you must write the script inside the previous argument.
+*   ***name*** (optional): use it if you want to give the routine a name.
+
+|       Now we are going to see some examples. In the first scenario, we have a simple counter code (no script or snippet) which will print numbers from 1 to 10 considering a two seconds interval between each printing.
+
+
+```{r Timer - Case 1, echo = TRUE, message = FALSE}
+
+# ------------------------------------- #
+# --- Example - Case 1: Simple Code --- #
+# ------------------------------------- #
+
+# --- Sourcing the library --- #
+source('https://raw.githubusercontent.com/paulo-icaro/Script_Timer/main/Timer.R')
+
+
+# --- Script to be used // Counter script - No need to execute it ! --- #
+# for(i in 1:10){
+#   print(i)
+#   Sys.sleep(2)
+# }
+
+
+# --- Accounting the time elapsed --- #
+timer(script = for(i in 1:10){print(i)
+                              Sys.sleep(2)},
+      type = 'simple',
+      name = 'counter')
+```
+
+
+|       In the second case we will account the elapsed time of a complete script. You can either use a routine from a local machine -- with the path properly specified -- or from a github repository. In this case, we will call a library from this author repository on github. Probably it will take only one second for that. However the code is proved to be up and running.
+
+
+```{r Timer - Case 2, echo = TRUE, message = FALSE}
+
+# ------------------------------------- #
+# --- Example - Case 2: Full Script --- #
+# ------------------------------------- #
+
+# --- Sourcing the library --- #
+source('https://raw.githubusercontent.com/paulo-icaro/Script_Timer/main/Timer.R')
+
+
+# --- Accounting the time elapsed --- #
+timer(script = 'https://raw.githubusercontent.com/paulo-icaro/Bacen_API/main/Bacen_API.R',
+      type = 'full',
+      name = 'author_libary')
+```
+
+
+|       For the final situation we will apply the timer function on a part (snippet) of a script. In this example we will write this script instead of sourcing it. Have in mind that this doesn't mean that sourcing isn't possible.
+
+
+``` {r Timer - Case 3 - Print Part, echo = TRUE, message = FALSE, results = 'hide'}
+
+# --------------------------------- #
+# --- Example - Case 3: Snippet --- #
+# --------------------------------- #
+
+# --- Sourcing the library --- #
+source('https://raw.githubusercontent.com/paulo-icaro/Script_Timer/main/Timer.R')
+
+
+# --- Script to be used // Counter script modified - No need to execute it ! --- #
+# for(i in 1:10){
+#   print(i)
+#   Sys.sleep(2)
+# }
+# print(paste0('The result of the sum is', x))
+
+
+
+# --- Script to be used // Counter script modified --- #
+timer(script = for(i in 1:10){x = i + 1
+                              Sys.sleep(2)},       # Accounting the time elapsed
+      type = 'snippet',
+      name = 'counter')    
+
+print(paste0('The result of the sum is ', x))
+```
+
+
+``` {r Timer - Case 3 - Result Part, echo = FALSE, message = FALSE}
+
+# --------------------------------- #
+# --- Example - Case 3: Snippet --- #
+# --------------------------------- #
+
+# --- Sourcing the library --- #
+source('https://raw.githubusercontent.com/paulo-icaro/Script_Timer/main/Timer.R')
+
+
+# --- Script to be used // Counter script modified - No need to execute it ! --- #
+# for(i in 1:10){
+#   print(i)
+#   Sys.sleep(2)
+# }
+# print(paste0('The result of the sum is', x))
+
+
+
+# --- Script to be used // Counter script modified --- #
+timer(script = for(i in 1:10){x = i + 1
+                              Sys.sleep(2)},       # Accounting the time elapsed
+      type = 'snippet',
+      name = 'counter')    
+
+print(paste0('The result of the sum is ', x))
+```
+</divs>
