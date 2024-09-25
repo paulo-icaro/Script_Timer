@@ -100,7 +100,7 @@ timer(script = 'https://raw.githubusercontent.com/paulo-icaro/Bacen_API/main/Bac
       name = 'author_libary')
 ```
 
-    ## The script author_libary took 0m 1s.
+    ## The script author_libary took 0m 0s.
 
       For the final situation we will apply the timer function on a part
 (snippet) of a script. In this example we will write this script instead
@@ -138,7 +138,7 @@ print(paste0('The result of the sum is ', x))
 
     ## [1] "The result of the sum is 11"
 
-##### Attention !
+#### Attention !
 
   Make sure to use the correctly the script and time arguments. In fact
 the ‘snippet’ and ‘simple’ types work the same way. However, if you
