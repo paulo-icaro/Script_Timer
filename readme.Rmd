@@ -3,7 +3,8 @@ title: "Compute how much time your script takes"
 author: "Paulo Icaro"
 date: "2024-09-23"
 hidedate: true
-output: github_document
+output: 
+  github_document: 
 ---
 
 
@@ -23,7 +24,7 @@ output: github_document
 </p>
 
 
-## The Timer Function
+## The timer function
 |       The **timer** function contains 3 arguments: script, type and name. 
 *   ***script***: represents the routine to be run. The way the routine is inserted in the script depends on the next argument
 *   ***type***: indicates whether it is a full script, just a snippet of a complete routine or its a mere code.
@@ -140,4 +141,10 @@ timer(script = for(i in 1:10){x = i + 1
 
 print(paste0('The result of the sum is ', x))
 ```
+
+\doublelinespace
+
+##### Attention !
+|   Make sure to use the correctly the script and time arguments. In fact the 'snippet' and 'simple' types work the same way. However, if you insert a full script and inform the type other option than 'full' the result will be shown incorrectly.
+
 </divs>

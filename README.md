@@ -20,7 +20,7 @@ the code.
 
 </p>
 
-## The Timer Function
+## The timer function
 
       The **timer** function contains 3 arguments: script, type and
 name.
@@ -131,11 +131,18 @@ timer(script = for(i in 1:10){x = i + 1
       type = 'snippet',
       name = 'counter')    
 
-print(paste0('The result of the sum is', x))
+print(paste0('The result of the sum is ', x))
 ```
 
     ## The snippet counter took 0m 20s.
 
-    ## [1] "The result of the sum is11"
+    ## [1] "The result of the sum is 11"
+
+##### Attention !
+
+  Make sure to use the correctly the script and time arguments. In fact
+the ‘snippet’ and ‘simple’ types work the same way. However, if you
+insert a full script and inform the type other option than ‘full’ the
+result will be shown incorrectly.
 
 </divs>
