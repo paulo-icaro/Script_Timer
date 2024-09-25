@@ -144,7 +144,7 @@ print(paste0('The result of the sum is ', x))
 
 \doublelinespace
 
-#### Attention !
+### Attention !
 |   Make sure to use the correctly the script and time arguments. In fact the 'snippet' and 'simple' types work the same way. However, if you insert a full script and inform the type other option than 'full' the result will be shown incorrectly.
 
 </divs>
